@@ -112,11 +112,59 @@ I was responsible for designing all three momentum strategies and the skewness o
 
 ### By Cap Bucket
 
-**Small Cap:** Skewness filter adds the most value — TS Sharpe improves from 0.186 → 0.225
+One of the key contributions of this project was splitting the S&P 500 universe into **Small, Mid, and Large cap** buckets to evaluate whether the skewness enhancement behaves differently across firm sizes. The results reveal striking differences.
 
-**Mid Cap:** Strongest effect overall — all three skewness-enhanced versions dominate plain versions with wide terminal wealth gaps
+**Small Cap (bottom 20% by index weight)**
 
-**Large Cap:** Skewness less decisive, but TS skewness-enhanced still significantly outperforms plain TS
+| Strategy | Monthly Sharpe |
+|----------|---------------|
+| Benchmark | 0.179 |
+| Plain TS | 0.186 |
+| Plain CS | 0.190 |
+| Plain Dual | 0.188 |
+| **Skew-Enhanced TS** | **0.225** |
+| **Skew-Enhanced CS** | **0.210** |
+| **Skew-Enhanced Dual** | **0.215** |
+
+→ The skewness filter adds the **most value** in small caps. The Sharpe ratio for TS jumps from 0.186 to 0.225 — a +20% improvement. Small cap stocks are more volatile and less efficiently priced, making the skewness screen particularly effective at filtering out lottery-like, crash-prone names.
+
+---
+
+**Mid Cap (next 30% by index weight)**
+
+| Strategy | Monthly Sharpe |
+|----------|---------------|
+| Benchmark | 0.179 |
+| Plain TS | 0.193 |
+| Plain CS | 0.190 |
+| Plain Dual | 0.195 |
+| **Skew-Enhanced TS** | **0.205** |
+| **Skew-Enhanced CS** | **0.203** |
+| **Skew-Enhanced Dual** | **0.210** |
+
+→ The **strongest overall effect** is observed here — all three skewness-enhanced strategies dominate their plain counterparts with the widest terminal wealth gaps across all buckets. Mid cap stocks combine enough liquidity to trade efficiently with enough inefficiency to reward the skewness screen.
+
+---
+
+**Large Cap (top 50% by index weight)**
+
+| Strategy | Monthly Sharpe |
+|----------|---------------|
+| Benchmark | 0.179 |
+| Plain TS | 0.190 |
+| Plain CS | 0.193 |
+| Plain Dual | 0.200 |
+| **Skew-Enhanced TS** | **0.202** |
+| Skew-Enhanced CS | 0.195 |
+| Skew-Enhanced Dual | 0.201 |
+
+→ The skewness filter is **less decisive** in large caps — likely because mega-cap stocks are more efficiently priced and exhibit lower return skewness variation. However, skewness-enhanced TS still outperforms its plain version, and both Dual strategies comfortably beat the benchmark.
+
+---
+
+**💡 Key Takeaway from Cap-Bucket Analysis**
+
+> The smaller the firm, the more the skewness filter helps. This makes economic sense: small and mid cap stocks are more exposed to idiosyncratic risk and lottery-ticket behaviour — exactly the kind of noise the skewness screen is designed to remove. For large caps, momentum alone is already more effective, but skewness still provides a marginal boost in most cases.
 
 ---
 
